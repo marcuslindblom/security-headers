@@ -2,12 +2,9 @@
 name: 'Security Headers'
 description: 'Analyze the Security Headers of a given URL using securityheaders.io'
 inputs:
-  app-id:
-    description: 'The Application ID'
+  url:
+    description: 'The URL to analyze'
     required: true
-outputs:
-  count:
-    description: 'Time'
 runs:
   using: 'docker'
   image: 'Dockerfile'
