@@ -1,9 +1,9 @@
 # action.yml
-name: 'Security Headers'
-description: 'Analyze the Security Headers of a given URL using securityheaders.io'
+name: 'Analyse your HTTP response headers'
+description: 'Quickly and easily assess the security of your HTTP response headers'
 inputs:
   url:
-    description: 'The URL to analyze'
+    description: 'URL to analyse'
     required: true
 runs:
   using: 'docker'
