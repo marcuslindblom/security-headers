@@ -1,24 +1,23 @@
-#!/bin/sh -l
+#!/bin/bash
 
-result=`securityheaders --json $1`
+declare -A grades=(
+   ['A+']=7
+   ['A']=6
+   ['B']=5
+	 ['C']=4
+	 ['D']=5
+	 ['E']=6
+	 ['F']=7
+)
 
-count=`echo $result | jq -r '[.headers[] | select(.rating == "bad")] | length'`
+GRADE=$2
 
-if [ $count -gt 0 ]
-then
-	printf "\n* Since last run we have detected $count bad headers:\n\n"
+RATING=`curl -s --location --request GET "https://securityheaders.io/?hide=on&q=$1" -I | sed -En 's/x-grade: (.*)/\1/p' | tr -d '\r'`
 
-	for item in $(echo $result | jq -r '.headers[] | select(.rating == "bad") | @base64')
-	do
-		_jq() {
-			echo ${item} | base64 --decode | jq -r ${1}
-		}
-		printf "|  Rating:               %s\t\n" "$(_jq '.rating')"
-		printf "|  Description:		 %s\t\n" "$(_jq '.description')"
-		printf "\n"
-	done
+echo "::set-output name=rating::$RATING"
 
-	exit 1
-else
+if [ ${grades[$RATING]} -ge ${grades[$GRADE]} ]; then
 	exit 0
+else
+	exit 1
 fi

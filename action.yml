@@ -5,8 +5,15 @@ inputs:
   url:
     description: 'URL to analyse'
     required: true
+  grade:
+    description: 'The desired security grade of your HTTP response headers'
+    required: true
+outputs:
+  rating:
+    description: 'The security rating of your HTTP response headers'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.url }}
+    - ${{ inputs.grade }}
