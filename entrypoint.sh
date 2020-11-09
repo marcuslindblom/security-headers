@@ -12,7 +12,7 @@ declare -A grades=(
 
 GRADE=$2
 
-RATING=`curl -s --location --request GET "https://securityheaders.io/?hide=on&q=$1" -I | sed -En 's/x-grade: (.*)/\1/p' | tr -d '\r'`
+RATING=`curl -s -L "https://securityheaders.io/?hide=on&q=$1" -I | sed -En 's/x-grade: (.*)/\1/p' | tr -d '\r'`
 
 echo "::set-output name=rating::$RATING"
 
