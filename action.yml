@@ -1,6 +1,9 @@
 # action.yml
 name: 'Analyse your HTTP response headers'
 description: 'Quickly and easily assess the security of your HTTP response headers'
+branding:
+  icon: 'check-circle'  
+  color: 'gray-dark'
 inputs:
   url:
     description: 'URL to analyse'
