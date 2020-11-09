@@ -19,7 +19,7 @@ jobs:
       - uses: marcuslindblom/security-headers@main
         with:
           url: ${{ secrets.SECURITY_HEADERS_URL }}
-          grade: C
+          grade: A
 ```
 
 Example output:
