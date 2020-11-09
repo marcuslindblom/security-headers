@@ -1,6 +1,7 @@
 # Analyse your HTTP response headers
 
-Quickly and easily assess the security of your HTTP response headers
+Quickly and easily assess the security of your HTTP response headers using using securityheaders.com
+
 A simple example:
 
 ```yml
