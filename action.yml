@@ -8,6 +8,9 @@ inputs:
   url:
     description: 'URL to analyse'
     required: true
+  followRedirects:
+    description: 'Whether or not to follow redirects when analyzing the URL'
+    required: false
   grade:
     description: 'The desired security grade of your HTTP response headers'
     required: true
@@ -19,4 +22,5 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.url }}
+    - ${{ inputs.followRedirects }}
     - ${{ inputs.grade }}
