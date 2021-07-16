@@ -1,6 +1,6 @@
 # Analyse your HTTP response headers
 
-Quickly and easily assess the security of your HTTP response headers using using securityheaders.com
+Quickly and easily assess the security of your HTTP response headers using [securityheaders.com](https://securityheaders.com).
 
 A simple example:
 
@@ -19,6 +19,7 @@ jobs:
       - uses: marcuslindblom/security-headers@main
         with:
           url: ${{ secrets.SECURITY_HEADERS_URL }}
+          followRedirects: true # This is optional
           grade: A
 ```
 
