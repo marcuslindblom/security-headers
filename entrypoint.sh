@@ -21,15 +21,18 @@ declare -A grades=(
 	['F']=1
 )
 
-if [ "$2" = 'true' ]; then
+if [ "$FOLLOW_REDIRECTS" = 'true' ]; then
     FOLLOW_REDIRECTS='on'
 fi
-
-GRADE=$3
 
 RATING=$(curl -s -L "https://securityheaders.com/?hide=on&followRedirects=$FOLLOW_REDIRECTS&q=$1" -I | sed -En 's/x-grade: (.*)/\1/p' | tr -d '\r')
 
 echo "::set-output name=rating::$RATING"
+
+if [ $RATING = "R" ]; then
+    echo "$1 returned a redirect, enable the followRedirects option to scan this URL."
+    exit 1
+fi
 
 if [ ${grades[$RATING]} -ge ${grades[$GRADE]} ]; then
 	exit 0
