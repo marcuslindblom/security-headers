@@ -22,5 +22,5 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.url }}
-    - ${{ inputs.followRedirects }}
     - ${{ inputs.grade }}
+    - ${{ inputs.followRedirects }}
