@@ -27,7 +27,7 @@ declare -A grades=(
 
 RATING=$(curl -s -L "https://securityheaders.com/?hide=on&followRedirects=$FOLLOW_REDIRECTS&q=$1" -I | sed -En 's/x-grade: (.*)/\1/p' | tr -d '\r')
 
-echo "::set-output name=rating::$RATING"
+echo "rating=$RATING" >> "$GITHUB_OUTPUT"
 
 if [[ $RATING = "R" ]]; then
     echo "$1 returned a redirect, enable the followRedirects option to scan this URL."
