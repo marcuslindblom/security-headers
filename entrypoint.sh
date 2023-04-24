@@ -3,7 +3,7 @@
 if [ $# == 0 ]; then
     echo "Usage: url [api-key] [grade] [followRedirects]"
     echo "* url: URL to analyse."
-		echo "* api-key: Your Security Headers API key."
+    echo "* api-key: Your Security Headers API key."
     echo "* grade: The desired security grade of your HTTP response headers. Possible grades: A+, A, B, C, D, E, F. Defaults to B."
     echo "* followRedirects: Follow redirects. Defaults to on, set to off or false to disable."
     exit 1
